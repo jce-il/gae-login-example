@@ -1,0 +1,17 @@
+html, body {
+    font-size:25px;
+}
+
+.info {
+    padding:0 30px;
+    margin-bottom:35px;
+}
+
+.info input {
+    height:30px;
+    width:250px;
+}
+
+#login_div {
+
+}

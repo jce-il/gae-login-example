@@ -3,8 +3,26 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Login Example</title>
+    <link rel="stylesheet" href="static/css/styles.css"/>
+    <script type="application/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="application/javascript" src="/static/js/index.js"></script>
 </head>
 <body>
-
+    {%if user%}
+    <div>Hello, {{user}}. You can <a href="/logout">logout</a> here</div>
+    {% else %}
+    <div id="login_div" class="info">
+        Login info:<br>
+        <input type="text" placeholder="email@example.com" id="login_email"><br>
+        <input type="password" placeholder="password" id="login_password"><br>
+        <button id="login">Login</button>
+    </div>
+    <div id="register_div" class="info">
+        Register info:<br>
+        <input type="text" placeholder="email@example.com" id="reg_email"><br>
+        <input type="password" placeholder="password" id="reg_password"><br>
+        <button id="register">Register</button>
+    </div>
+    {%endif%}
 </body>
 </html>
