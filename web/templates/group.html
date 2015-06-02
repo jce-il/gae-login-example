@@ -8,15 +8,20 @@
     <script type="application/javascript" src="/static/js/group.js"></script>
 </head>
 <body>
+    <input type="hidden" id="group_id" value="{{group_id}}">
    <div>Hello, {{email}}. You can <a href="/logout">logout</a> here</div><br>
 
     {% if no_access %}
         <div>You do not have access to this group</div>
     {% else %}
         Title: {{ group_title }}<br>
-        Admin: {{ group_admin }}<br>
+        Admin: {{ group_admin }}<br><br>
+
+        Add member: <input type="text" id="new_member"><button id="add_member">Add member</button><br/>
+
 
         memebers:
+        <div id="members"></div>
 
     {% endif %}
 

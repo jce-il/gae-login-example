@@ -10,7 +10,7 @@ class AllGroupsHandler(webapp2.RequestHandler):
         return
 
 class GroupHandler(webapp2.RequestHandler):
-    def get(self, group):
+    def get(self, group_id):
         template_params = {}
         user = None
         if self.request.cookies.get('our_token'):    #the cookie that should contain the access token!
@@ -21,12 +21,13 @@ class GroupHandler(webapp2.RequestHandler):
 
         template_params['email'] = user.email
 
-        group = Group.get_by_id(int(group))
+        group = Group.get_by_id(int(group_id))
         if group.admin != user.key and user.key not in group.members:
             template_params['no_access'] = True
         else:
             template_params['group_title'] = group.title
             template_params['group_admin'] = group.admin.get().email
+            template_params['group_id'] = group_id
 
         html = template.render('web/templates/group.html', template_params)
         self.response.write(html)

@@ -5,6 +5,14 @@ class Group(ndb.Model):
     admin = ndb.KeyProperty()
     members = ndb.KeyProperty(repeated=True)
 
+    def getMembers(self):
+        members = []
+        for member in self.members:
+            members.append({"email":member.get().email})
+
+        return members
+
+
     @staticmethod
     def getAdminGroups(user):
         q = Group.query(Group.admin == user.key)
