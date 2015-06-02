@@ -11,9 +11,11 @@ class MainHandler(webapp2.RequestHandler):
 
         template_variables = {}
         if user:
-            template_variables['user'] = user.email
+            self.redirect('/personal')
+            return
+            #template_variables['user'] = user.email
 
-        html = template.render('templates/index.html', template_variables)
+        html = template.render('web/templates/index.html', template_variables)
         self.response.write(html)
 
 class LoginHandler(webapp2.RequestHandler):
@@ -59,13 +61,17 @@ class LogoutHandler(webapp2.RequestHandler):
 class PersonalHandler(webapp2.RequestHandler):
     def get(self):
         user = None
+        template_vars = {}
         if self.request.cookies.get('our_token'):    #the cookie that should contain the access token!
             user = User.checkToken(self.request.cookies.get('our_token'))
 
         if not user:
             self.redirect('/')
 
-        html = template.render('templates/personal.html', {})
+        template_vars['email'] = user.email
+        template_vars['groups_num'] = 'To be implemented'
+
+        html = template.render('web/templates/personal.html', template_vars)
         self.response.write(html)
 
 app = webapp2.WSGIApplication([
