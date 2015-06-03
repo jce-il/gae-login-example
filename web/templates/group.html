@@ -12,9 +12,9 @@
    <div>Hello, {{email}}. You can <a href="/logout">logout</a> here</div><br>
 
     {% if no_access %}
-        <div>You do not have access to this group</div>
+        <div class="no_access">You do not have access to this group</div>
     {% else %}
-        Title: {{ group_title }}<br>
+        Title: <b>{{ group_title }}</b><br>
         Admin: {{ group_admin }}<br><br>
 
         Add member: <input type="text" id="new_member"><button id="add_member">Add member</button><br/>

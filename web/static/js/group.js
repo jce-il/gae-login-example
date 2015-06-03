@@ -1,7 +1,8 @@
 var groupID = '';
 $(function() {
     groupID = $('#group_id').val();
-    refreshMembers();
+    if(groupID)
+        refreshMembers();
    $('#add_member').on('click', addMember);
 });
 

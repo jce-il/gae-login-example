@@ -15,3 +15,7 @@ html, body {
 #login_div {
 
 }
+
+.no_access {
+    color:#A00;
+}
